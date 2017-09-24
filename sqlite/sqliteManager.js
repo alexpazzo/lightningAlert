@@ -9,6 +9,7 @@ const myEmitter = new MyEmitter();
 let db = undefined;
 
 module.exports.init = (mypath = __dirname) => {
+    log.info('Database path: ' + path.resolve(mypath, 'lightning.db'));
     db = new sqlite3.Database(path.resolve(mypath, 'lightning.db'), (err) => {
         if (err) {
             console.error(err.message);
