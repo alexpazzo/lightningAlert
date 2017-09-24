@@ -1,11 +1,12 @@
 {
-        "version": "0.2.0",
-        "configurations": [
-            {
-                "type": "node",
-                "request": "launch",
-                "name": "Launch Program",
-                "program": "${workspaceRoot}\\app.js"
-            }
-        ]
-    }
+    "version": "0.2.0",
+    "configurations": [{
+        "type": "node",
+        "request": "launch",
+        "name": "Launch Program",
+        "program": "${workspaceRoot}\\app.js",
+        "env": {
+            "NODE_ENV": "dev"
+        }
+    }]
+}

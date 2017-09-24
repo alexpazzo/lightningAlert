@@ -1,9 +1,13 @@
 'use strict'
 const nodemailer = require('nodemailer');
 const moment = require('moment');
+const log = require("loglevel");
 let transporter;
+let lastMail;
+let freqMail;
 
 module.exports.init = (config) => {
+    freqMail = config.myFreqMail;
     transporter = nodemailer.createTransport({
         host: 'smtp.gmail.com',
         port: 465,
@@ -17,13 +21,17 @@ module.exports.init = (config) => {
 
 
 module.exports.sendEmail = (level, destinary, text) => {
-    if(!transporter) throw new Error('Missing Email init()');
+    // CHECK 
+    if (!transporter || !config) throw new Error('Missing Email init()');
+    if (lastMail && moment().diff(lastMail, 'minutes') < freqMail) return;
+    //SENDING MAIL
     let mailOptions = prepareMail(level, destinary, text);
     transporter.sendMail(mailOptions, (error, info) => {
         if (error) {
-            return console.log(error);
+            return log.error(error);
         }
-        console.log('Message sent: %s', info.messageId);
+        log.info('Message sent: %s', info.messageId);
+        lastMail = moment();
     });
 }
 
@@ -40,10 +48,9 @@ function prepareMail(level, destinary, text) {
     } else {
         mailOptions.text = text;
     }
-
     switch (level) {
         case 'ALERT':
-            mailOptions.subject = 'Fulmini Alert! 🌩️ (' + moment().format('D/M/YYYY - HH:mm') +')' // Subject line
+            mailOptions.subject = 'Fulmini Alert! 🌩️ (' + moment().format('D/M/YYYY - HH:mm') + ')' // Subject line
             break;
         case 'WARNING':
 

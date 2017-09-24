@@ -1,7 +1,7 @@
 'use strict'
 const path = require('path');
 const sqlite3 = require('sqlite3').verbose();
-
+const log = require("loglevel").getLogger("sqliteManager");
 
 const EventEmitter = require('events');
 class MyEmitter extends EventEmitter {}
@@ -9,7 +9,7 @@ const myEmitter = new MyEmitter();
 let db = undefined;
 
 module.exports.init = (mypath = __dirname) => {
-    db = new sqlite3.Database(path.resolve(mypath,'lightning.db'), (err) => {
+    db = new sqlite3.Database(path.resolve(mypath, 'lightning.db'), (err) => {
         if (err) {
             console.error(err.message);
         }
@@ -53,7 +53,7 @@ module.exports.insertStrike = (strike, tag) => {
         }
     });
 }
-module.exports.getLast
+
 
 module.exports.close = () => {
     if (!db) throw new Error('DB not inizialized');

@@ -1,0 +1,17 @@
+{
+    "myemail": "alessandro.belli89@gmail.com",
+    "freqMail": 10,
+    "dbFolder": "C:\\Users\\aless\\Desktop\\db",
+    "home": {
+        "posistion": {
+            "latitude": 45.643002,
+            "longitude": 8.762719
+        },
+        "radius": {
+            "alert": 1000,
+            "watching": 50000
+        }
+    },
+    "logFreq": 10000
+
+}
