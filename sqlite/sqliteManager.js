@@ -2,6 +2,8 @@
 const path = require('path');
 const sqlite3 = require('sqlite3').verbose();
 const log = require("loglevel").getLogger("sqliteManager");
+const fs = require('fs');
+
 
 const EventEmitter = require('events');
 class MyEmitter extends EventEmitter {}
@@ -9,6 +11,10 @@ const myEmitter = new MyEmitter();
 let db = undefined;
 
 module.exports.init = (mypath = __dirname) => {
+    if (!fs.existsSync(mypath)) {
+        fs.mkdirSync(mypath);
+        log.info('Creating dir: ', mypath);
+    }
     log.info('Database path: ' + path.resolve(mypath, 'lightning.db'));
     db = new sqlite3.Database(path.resolve(mypath, 'lightning.db'), (err) => {
         if (err) {
