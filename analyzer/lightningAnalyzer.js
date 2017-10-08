@@ -2,7 +2,7 @@
 const WebSocket = require('ws');
 const geolib = require('geolib');
 const EventEmitter = require('events');
-const log = require("loglevel").getLogger("lightningAnalyzer");
+const log = new Cologger("LightinigAnalyzer");
 
 class MyEmitter extends EventEmitter {}
 

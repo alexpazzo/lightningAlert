@@ -1,7 +1,6 @@
 {
     "myemail": "your email",
     "freqMail": 10,
-    "dbFolder": "/home/pi/FakeDB",
     "home": {
         "posistion": {
             "latitude": 45.643002,

@@ -1,11 +1,11 @@
 'use strict'
+
 const appKernel = require('./appKernel.js');
 const blitzortung = require('./analyzer/lightningAnalyzer.js');
 const db = require('./sqlite/sqliteManager');
 const emailSender = require('./mail/mailManager');
 const moment = require('moment');
-const log = require("loglevel").getLogger("app");
-
+const log = new Cologger("App");
 //CONST
 let counterAlert = 0;
 let counterWatching = 0;

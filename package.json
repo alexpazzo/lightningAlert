@@ -1,19 +1,20 @@
 {
-  "name": "lightwatcher",
-  "version": "1.0.0",
-  "description": "",
-  "main": "app.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "author": "Me",
-  "license": "ISC",
-  "dependencies": {
-    "geolib": "^2.0.23",
-    "loglevel": "^1.5.0",
-    "moment": "^2.18.1",
-    "nodemailer": "^4.1.0",
-    "sqlite3": "^3.1.11",
-    "ws": "^3.2.0"
-  }
+    "name": "lightwatcher",
+    "version": "1.0.0",
+    "description": "",
+    "main": "app.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "author": "Me",
+    "license": "ISC",
+    "dependencies": {
+        "chalk": "^2.1.0",
+        "geolib": "^2.0.23",
+        "moment": "^2.18.1",
+        "mongoose": "^4.11.14",
+        "nodemailer": "^4.1.0",
+        "sqlite3": "^3.1.11",
+        "ws": "^3.2.0"
+    }
 }

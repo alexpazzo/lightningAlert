@@ -1,7 +1,7 @@
 'use strict'
 const path = require('path');
 const sqlite3 = require('sqlite3').verbose();
-const log = require("loglevel").getLogger("sqliteManager");
+const log = new Cologger("LightinigAnalyzer");
 const fs = require('fs');
 
 
@@ -18,10 +18,10 @@ module.exports.init = (mypath = __dirname) => {
     log.info('Database path: ' + path.resolve(mypath, 'lightning.db'));
     db = new sqlite3.Database(path.resolve(mypath, 'lightning.db'), (err) => {
         if (err) {
-            console.error(err.message);
+            log.error(err.message);
         }
         myEmitter.emit('connected')
-        console.log('Connected to the lightning database.');
+        log.info('Connected to the lightning database.');
     });
 
     //mds = maximal deviation span in nano seconds
@@ -56,7 +56,7 @@ module.exports.insertStrike = (strike, tag) => {
 
     db.run(sql, data, (err) => {
         if (err) {
-            return console.error(err.message);
+            return log.error(err.message);
         }
     });
 }
@@ -66,9 +66,9 @@ module.exports.close = () => {
     if (!db) throw new Error('DB not inizialized');
     db.close((err) => {
         if (err) {
-            console.error(err.message);
+            log.error(err.message);
         }
         myEmitter.emit('disconnected')
-        console.log('Close the database connection.');
+        log.info('Close the database connection.');
     })
 }
